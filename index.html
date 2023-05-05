@@ -33,41 +33,46 @@
 			var input = document.getElementById("numbers").value;
 			var numbers = input.split(",");
 			var sum = 0;
-			var i = 1;
 			for (var i = 0; i < numbers.length; i++) {
 				sum += parseFloat(numbers[i]);
 			}
 			var average = sum / numbers.length;
 			document.getElementById("result").innerHTML = average.toFixed(2);
-			
+
+			var i = 1;
+			var j = 1;
 			var serve = (6*(numbers.length+i)-sum)/i;
-				var i = 0;
 				while(serve > 10){
-					var i +=1;
+					i +=1;
 					var serve = (6*(numbers.length+i)-sum)/i;
+
 				}
 			
-
 			document.getElementById("quanti").innerHTML = i.toFixed(0);
 			document.getElementById("manca").innerHTML = serve.toFixed(2);
 
             /*var serve = 6*(numbers.length+1)-sum;
             document.getElementById("manca").innerHTML = serve.toFixed(2);*/
-				if(i==1){
-					var serve2 = (6*(numbers.length+2)-sum)/2;
-            		document.getElementById("quanti2").innerHTML = 2;
+
+			var serve2 = (6*(numbers.length+2)-sum)/2;
+				if (serve2 > 10){
+					document.getElementById("quanti2").innerHTML = "Non disponibile";
+					document.getElementById("manca2").innerHTML = "Non disponibile";
+				}else{
+					document.getElementById("quanti2").innerHTML = 2;
 					document.getElementById("manca2").innerHTML = serve2.toFixed(2);
-            		var serve3 = (6*(numbers.length+3)-sum)/3;
-            		document.getElementById("quanti3").innerHTML = 3;
-					document.getElementById("manca3").innerHTML = serve3.toFixed(2); 
 				}
-				if(i==2){
-					var serve2 = serve;
-					var serve3 = (6*(numbers.length+3)-sum)/3;
-            		document.getElementById("quanti3").innerHTML = 3;
-					document.getElementById("manca3").innerHTML = serve3.toFixed(2); 
+			
+
+			var serve3 = (6*(numbers.length+3)-sum)/3;
+				if (serve3 > 10){
+					document.getElementById("quanti3").innerHTML = "Non disponibile";
+				document.getElementById("manca3").innerHTML = "Non disponibile";  
+				}else{
+					document.getElementById("quanti3").innerHTML = 3;
+					document.getElementById("manca3").innerHTML = serve3.toFixed(2);  
 				}
-                   
+			   	    
 		}
 	</script>
 
