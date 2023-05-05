@@ -40,21 +40,45 @@
 			document.getElementById("result").innerHTML = average.toFixed(2);
 
 			var i = 1;
-			var j = 1;
 			var serve = (6*(numbers.length+i)-sum)/i;
+			
+			var serve2 = (6*(numbers.length+2+i)-sum)/2+i;
+			var serve3 = (6*(numbers.length+3+i)-sum)/3+i;
+			if(average >= 6){
+				document.getElementById("quanti").innerHTML = "Non servono altri voti";
+				document.getElementById("manca").innerHTML = "";
+			}else{
 				while(serve > 10){
 					i +=1;
 					var serve = (6*(numbers.length+i)-sum)/i;
-
 				}
+				var j = i;
+				while(serve2 > 10){
+						j +=1;
+						var serve2 = (6*(numbers.length+j)-sum)/j;
+					}	
+				var k = j;
+				while(serve3 > 10){
+						k +=1;
+						var serve3 = (6*(numbers.length+k)-sum)/k;
+					}
+				document.getElementById("quanti").innerHTML = i.toFixed(0);
+				document.getElementById("manca").innerHTML = serve.toFixed(2);
+
+				document.getElementById("quanti2").innerHTML = j.toFixed(0);
+				document.getElementById("manca2").innerHTML = serve2.toFixed(2);
+
+				document.getElementById("quanti3").innerHTML = k.toFixed(0);
+				document.getElementById("manca3").innerHTML = serve3.toFixed(2);  
+			}
+				
 			
-			document.getElementById("quanti").innerHTML = i.toFixed(0);
-			document.getElementById("manca").innerHTML = serve.toFixed(2);
+			
 
             /*var serve = 6*(numbers.length+1)-sum;
             document.getElementById("manca").innerHTML = serve.toFixed(2);*/
 
-			var serve2 = (6*(numbers.length+2)-sum)/2;
+			/*var serve2 = (6*(numbers.length+2)-sum)/2;
 				if (serve2 > 10){
 					document.getElementById("quanti2").innerHTML = "Non disponibile";
 					document.getElementById("manca2").innerHTML = "Non disponibile";
@@ -71,7 +95,7 @@
 				}else{
 					document.getElementById("quanti3").innerHTML = 3;
 					document.getElementById("manca3").innerHTML = serve3.toFixed(2);  
-				}
+				}*/
 			   	    
 		}
 	</script>
