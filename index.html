@@ -20,13 +20,10 @@
 
     	<p>Per arrivare a 6 mancano:</p>
 		<div id="quanti"></div>
-		<div id="manca"></div>
 		<p id="oppure"></p>
 		<div id="quanti2"></div>
-		<div id="manca2"></div>
-		<p id="oppure"></p>
+
 		<div id="quanti3"></div>
-		<div id="manca3"></div>
 	</div>
 	<script>
 		function calculate() {
@@ -39,75 +36,46 @@
 			var average = sum / numbers.length;
 			document.getElementById("result").innerHTML = average.toFixed(2);
 
-			var i = 1;
-			var serve = (6*(numbers.length+i)-sum)/i;
-			
-			
-			
 			if(average >= 6){
+				/*inizializzo div vuoti*/	
 				document.getElementById("quanti").innerHTML = "Non servono altri voti";
-				document.getElementById("manca").innerHTML = "";
 
 				document.getElementById("quanti2").innerHTML = "";
-				document.getElementById("manca2").innerHTML = "";
 
 				document.getElementById("quanti3").innerHTML = "";
-				document.getElementById("manca3").innerHTML = "";
 
 				document.getElementById("oppure").innerHTML = "";
 			}else{
 				document.getElementById("oppure").innerHTML = "Oppure";
+				/*calcolo 1° quantità (i) x voti (serve)*/	
+				var i = 1;
+				var serve = (6*(numbers.length+i)-sum)/i;
 				while(serve > 10){
 					i +=1;
 					var serve = (6*(numbers.length+i)-sum)/i;
 				}
+				/*calcolo 2° quantità (i) x voti (serve)*/	
 				var serve2 = (6*(numbers.length+1+i)-sum)/1+i;
 				var j = i;
 				while(serve2 > 10){
 						j +=1;
 						var serve2 = (6*(numbers.length+j)-sum)/j;
 					}
+				/*calcolo 3° quantità (i) x voti (serve)*/	
 				var serve3 = (6*(numbers.length+2+i)-sum)/2+i;
 				var k = j;
 				while(serve3 > 10){
 						k +=1;
 						var serve3 = (6*(numbers.length+k)-sum)/k;
 					}
-				document.getElementById("quanti").innerHTML = i.toFixed(0);
-				document.getElementById("manca").innerHTML = serve.toFixed(2);
-
-				document.getElementById("quanti2").innerHTML = j.toFixed(0);
-				document.getElementById("manca2").innerHTML = serve2.toFixed(2);
-
-				document.getElementById("quanti3").innerHTML = k.toFixed(0);
-				document.getElementById("manca3").innerHTML = serve3.toFixed(2);  
-			}
-				
-			
-			
-
-            /*var serve = 6*(numbers.length+1)-sum;
-            document.getElementById("manca").innerHTML = serve.toFixed(2);*/
-
-			/*var serve2 = (6*(numbers.length+2)-sum)/2;
-				if (serve2 > 10){
-					document.getElementById("quanti2").innerHTML = "Non disponibile";
-					document.getElementById("manca2").innerHTML = "Non disponibile";
-				}else{
-					document.getElementById("quanti2").innerHTML = 2;
-					document.getElementById("manca2").innerHTML = serve2.toFixed(2);
-				}
-			
-
-			var serve3 = (6*(numbers.length+3)-sum)/3;
-				if (serve3 > 10){
-					document.getElementById("quanti3").innerHTML = "Non disponibile";
-				document.getElementById("manca3").innerHTML = "Non disponibile";  
-				}else{
-					document.getElementById("quanti3").innerHTML = 3;
-					document.getElementById("manca3").innerHTML = serve3.toFixed(2);  
-				}*/
-			   	    
+				/*stampa 1° quantità x voti*/	
+				document.getElementById("quanti").innerHTML = i.toFixed(0) + " volte " + serve.toFixed(2);
+				/*stampa 2° quantità x voti*/	
+				document.getElementById("quanti2").innerHTML = j.toFixed(0) + " volte " + serve2.toFixed(2);
+				/*stampa 3° quantità x voti*/	
+				document.getElementById("quanti3").innerHTML = k.toFixed(0) + " volte " + serve3.toFixed(2);
+ 
+			}  
 		}
 	</script>
 
