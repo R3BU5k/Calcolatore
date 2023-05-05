@@ -36,16 +36,7 @@
 			var average = sum / numbers.length;
 			document.getElementById("result").innerHTML = average.toFixed(2);
 
-			if(average >= 6){
-				/*inizializzo div vuoti*/	
-				document.getElementById("quanti").innerHTML = "Non servono altri voti";
-
-				document.getElementById("quanti2").innerHTML = "";
-
-				document.getElementById("quanti3").innerHTML = "";
-
-				document.getElementById("oppure").innerHTML = "";
-			}else{
+			
 				document.getElementById("oppure").innerHTML = "Oppure";
 				/*calcolo 1° quantità (i) x voti (serve)*/	
 				var i = 1;
@@ -75,7 +66,7 @@
 				/*stampa 3° quantità x voti*/	
 				document.getElementById("quanti3").innerHTML = k.toFixed(0) + " volte " + serve3.toFixed(2);
  
-			}  
+			
 		}
 	</script>
 
