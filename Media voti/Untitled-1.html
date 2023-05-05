@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calcola la media</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link href="layout.css" rel="stylesheet">
+</head>
+<body>
+
+	<h1>Calcola la media</h1>
+	<div class="container">
+		<p>Inserisci una serie di numeri separati da una virgola:</p>
+		<input type="text" id="numbers">
+		<button onclick="calculate()">Calcola</button>
+
+		<p>La media dei numeri inseriti è:</p>
+		<div id="result"></div>
+
+    	<p>Per arrivare a 6 mancano:</p>
+		<div id="quanti"></div>
+		<div id="manca"></div>
+		<p>Oppure:</p>
+		<div id="quanti2"></div>
+		<div id="manca2"></div>
+		<p>Oppure:</p>
+		<div id="quanti3"></div>
+		<div id="manca3"></div>
+	</div>
+	<script>
+		function calculate() {
+			var input = document.getElementById("numbers").value;
+			var numbers = input.split(",");
+			var sum = 0;
+			for (var i = 0; i < numbers.length; i++) {
+				sum += parseFloat(numbers[i]);
+			}
+			var average = sum / numbers.length;
+			document.getElementById("result").innerHTML = average.toFixed(2);
+			if(average < 6)
+			var i = 0;
+			var serve = (6*(numbers.length+i)-sum)/i;
+				while(serve > 10){
+					i +=1;
+					var serve = (6*(numbers.length+i)-sum)/i;
+				}
+			
+
+			document.getElementById("quanti").innerHTML = i.toFixed(0);
+			document.getElementById("manca").innerHTML = serve.toFixed(2);
+
+            /*var serve = 6*(numbers.length+1)-sum;
+            document.getElementById("manca").innerHTML = serve.toFixed(2);*/
+				if(i==1){
+					var serve2 = (6*(numbers.length+2)-sum)/2;
+            		document.getElementById("quanti2").innerHTML = 2;
+					document.getElementById("manca2").innerHTML = serve2.toFixed(2);
+            		var serve3 = (6*(numbers.length+3)-sum)/3;
+            		document.getElementById("quanti3").innerHTML = 3;
+					document.getElementById("manca3").innerHTML = serve3.toFixed(2); 
+				}
+				if(i==2){
+					var serve3 = (6*(numbers.length+3)-sum)/3;
+            		document.getElementById("quanti3").innerHTML = 3;
+					document.getElementById("manca3").innerHTML = serve3.toFixed(2); 
+				}
+                   
+		}
+	</script>
+
+</body>
+</html>
