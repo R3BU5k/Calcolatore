@@ -33,12 +33,13 @@
 			var input = document.getElementById("numbers").value;
 			var numbers = input.split(",");
 			var sum = 0;
+			var i = 1;
 			for (var i = 0; i < numbers.length; i++) {
 				sum += parseFloat(numbers[i]);
 			}
 			var average = sum / numbers.length;
 			document.getElementById("result").innerHTML = average.toFixed(2);
-			if(average < 6)
+			if(average > 6)
 			var i = 0;
 			var serve = (6*(numbers.length+i)-sum)/i;
 				while(serve > 10){
