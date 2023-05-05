@@ -21,10 +21,10 @@
     	<p>Per arrivare a 6 mancano:</p>
 		<div id="quanti"></div>
 		<div id="manca"></div>
-		<p>Oppure:</p>
+		<p id="oppure"></p>
 		<div id="quanti2"></div>
 		<div id="manca2"></div>
-		<p>Oppure:</p>
+		<p id="oppure"></p>
 		<div id="quanti3"></div>
 		<div id="manca3"></div>
 	</div>
@@ -42,21 +42,32 @@
 			var i = 1;
 			var serve = (6*(numbers.length+i)-sum)/i;
 			
-			var serve2 = (6*(numbers.length+2+i)-sum)/2+i;
-			var serve3 = (6*(numbers.length+3+i)-sum)/3+i;
+			
+			
 			if(average >= 6){
 				document.getElementById("quanti").innerHTML = "Non servono altri voti";
 				document.getElementById("manca").innerHTML = "";
+
+				document.getElementById("quanti2").innerHTML = "";
+				document.getElementById("manca2").innerHTML = "";
+
+				document.getElementById("quanti3").innerHTML = "";
+				document.getElementById("manca3").innerHTML = "";
+
+				document.getElementById("oppure").innerHTML = "";
 			}else{
+				document.getElementById("oppure").innerHTML = "Oppure";
 				while(serve > 10){
 					i +=1;
 					var serve = (6*(numbers.length+i)-sum)/i;
 				}
+				var serve2 = (6*(numbers.length+1+i)-sum)/1+i;
 				var j = i;
 				while(serve2 > 10){
 						j +=1;
 						var serve2 = (6*(numbers.length+j)-sum)/j;
-					}	
+					}
+				var serve3 = (6*(numbers.length+2+i)-sum)/2+i;
 				var k = j;
 				while(serve3 > 10){
 						k +=1;
