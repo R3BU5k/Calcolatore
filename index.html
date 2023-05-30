@@ -53,7 +53,7 @@
 			var average = sum / numbers.length;
 			document.getElementById("result").innerHTML = average.toFixed(2);
 
-			if(average >= 5.5){
+			if(average >= 6){
 				/*inizializzo div vuoti*/	
 				document.getElementById("quanti").innerHTML = "Non servono altri voti";
 
@@ -66,24 +66,24 @@
 				document.getElementById("oppure").innerHTML = "Oppure";
 				/*calcolo 1° quantità (i) x voti (serve)*/	
 				var i = 1;
-				var serve = (5.5*(numbers.length+i)-sum)/i;
+				var serve = (6*(numbers.length+i)-sum)/i;
 				while(serve > 10){
 					i +=1;
-					var serve = (5.5*(numbers.length+i)-sum)/i;
+					var serve = (6*(numbers.length+i)-sum)/i;
 				}
 				/*calcolo 2° quantità (i) x voti (serve)*/	
-				var serve2 = (5.5*(numbers.length+1+i)-sum)/1+i;
+				var serve2 = (6*(numbers.length+1+i)-sum)/1+i;
 				var j = i;
 				while(serve2 > 10){
 						j +=1;
-						var serve2 = (5.5*(numbers.length+j)-sum)/j;
+						var serve2 = (6*(numbers.length+j)-sum)/j;
 					}
 				/*calcolo 3° quantità (i) x voti (serve)*/	
-				var serve3 = (5.5*(numbers.length+2+i)-sum)/2+i;
+				var serve3 = (6*(numbers.length+2+i)-sum)/2+i;
 				var k = j;
 				while(serve3 > 10){
 						k +=1;
-						var serve3 = (5.5*(numbers.length+k)-sum)/k;
+						var serve3 = (6*(numbers.length+k)-sum)/k;
 					}
 				/*stampa 1° quantità x voti*/	
 				document.getElementById("quanti").innerHTML = i.toFixed(0) + " volte " + serve.toFixed(2);
