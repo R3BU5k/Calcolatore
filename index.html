@@ -29,7 +29,7 @@
 	<h1>Calcola la media</h1>
 	<div class="container">
 		<p>Inserisci una serie di numeri separati da una virgola:</p>
-		<input type="text" id="numbers">
+		<input type="text" id="numbers" oninput="validateInput(this)" />
 		<button onclick="calculate()">Calcola</button>
 
 		<p>La media dei numeri inseriti è:</p>
@@ -43,6 +43,10 @@
 		<div id="quanti3"></div>
 	</div>
 	<script>
+		function validateInput(input) {
+	  		input.value = input.value.replace(/[^0-9.,]/g, '');
+		}
+		
 		function calculate() {
 			var input = document.getElementById("numbers").value;
 			var numbers = input.split(",");
