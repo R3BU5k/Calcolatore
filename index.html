@@ -71,7 +71,7 @@
 				/*calcolo 1° quantità (i) x voti (serve)*/	
 				var i = 1;
 				var serve = (5.5*(numbers.length+i)-sum)/i;
-				while(serve > 10){
+				while(serve > 10 || serve < 0){
 					i +=1;
 					var serve = (5.5*(numbers.length+i)-sum)/i;
 				}
