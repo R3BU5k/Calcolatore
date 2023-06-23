@@ -59,6 +59,14 @@ button:active {
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
 }
+#media {
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
 @media (max-width: 1000px){
     h1{
         /*border: 8px solid rgb(255, 0, 0);*/
@@ -81,6 +89,11 @@ button:active {
         width: 100px;
         font-size: 15px;
     }
+    #media {
+    	height: 20px;
+    	width: 20px;
+    	font-size: 15px;
+    }
 }
 @media (prefers-color-scheme: dark){
     body {
@@ -89,6 +102,11 @@ button:active {
     }
     #numbers {
         background-color: #000000;
+        color: rgb(255, 255, 255);
+        border-color: rgb(0, 255, 26);
+    }
+    #media {
+   	    background-color: #000000;
         color: rgb(255, 255, 255);
         border-color: rgb(0, 255, 26);
     }
