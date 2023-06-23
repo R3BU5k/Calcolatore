@@ -28,6 +28,10 @@
 
 	<h1>Calcola la media</h1>
 	<div class="container">
+
+		<p>Inserisci la media che ti serve:</p>
+		<input type="text" id="media" oninput="validateInput(this)" />
+
 		<p>Inserisci una serie di numeri separati da una virgola:</p>
 		<input type="text" id="numbers" oninput="validateInput(this)" />
 		<button onclick="calculate()">Calcola</button>
@@ -35,7 +39,7 @@
 		<p>La media dei numeri inseriti è:</p>
 		<div id="result"></div>
 
-    	<p>Per arrivare a 5.5 mancano:</p>
+    	<p>Per arrivare alla media richiesta mancano:</p>
 		<div id="quanti"></div>
 		<p id="oppure"></p>
 		<div id="quanti2"></div>
@@ -51,6 +55,14 @@
 			var input = document.getElementById("numbers").value;
 			var numbers = input.split(",");
 			var sum = 0;
+			/*inizializzo array dei voti mancanti*/
+			const serve = [];
+			serve[0] = 1;
+			serve[1] = 1;
+			serve[2] = 1;
+			/*prelevo media desiderata*/
+			var valore = document.getElementById("media").value;
+
 			for (var i = 0; i < numbers.length; i++) {
 				sum += parseFloat(numbers[i]);
 			}
@@ -70,39 +82,56 @@
 				document.getElementById("oppure").innerHTML = "Oppure";
 				/*calcolo 1° quantità (i) x voti (serve)*/	
 				var i = 1;
-				var serve = (5.5*(numbers.length+i)-sum)/i;
-				while(serve > 10 || serve < 0.15){
+				serve[0] = (valore*(numbers.length+i)-sum)/i;
+				while(serve[0] > 10 || serve[0] < 0){
 					i +=1;
-					var serve = (5.5*(numbers.length+i)-sum)/i;
+					serve[0] = (valore*(numbers.length+i)-sum)/i;
 				}
 				/*calcolo 2° quantità (i) x voti (serve)*/	
-					var j = i + 1;
-					var serve2 = (5.5*(numbers.length+j)-sum)/j;
-				while(serve2 > 10){
-						var serve2 = (5.5*(numbers.length+j)-sum)/j;
-						if(serve2 > 10){
-							j += 1;
-						}
+				var j = i + 1;
+				serve[1] = (valore*(numbers.length+j)-sum)/j;
+				while(serve[1] > 10){
+					serve[1] = (valore*(numbers.length+j)-sum)/j;
+					if(serve[1] > 10){
+						j += 1;
 					}
+				}
 				/*calcolo 3° quantità (i) x voti (serve)*/	
-					var k = j + 1;
-					var serve3 = (5.5*(numbers.length+k)-sum)/k;
-				while(serve3 > 10){
-						var serve3 = (5.5*(numbers.length+k)-sum)/k;
-						if(serve3 > 10){
-							k +=1;
-						}
+				var k = j + 1;
+				serve[2] = (valore*(numbers.length+k)-sum)/k;
+				while(serve[2] > 10){
+					serve[2] = (valore*(numbers.length+k)-sum)/k;
+					if(serve[2] > 10){
+						k +=1;
 					}
+				}
+				/*ciclo arrotondamento voto standard in eccesso*/
+				for (var arr = 0; arr < 4; arr++) {
+				var a = Math.floor(serve[arr]);
+
+				if( serve[arr] - a > 0.01 && serve[arr] - a <= 0.15){
+					serve[arr] = a + 0.15;
+				}
+				else if( serve[arr] - a > 0.16 && serve[arr] - a <= 0.5){
+					serve[arr] = a + 0.5;
+				}
+				else if( serve[arr] - a > 0.51 && serve[arr] - a <= 0.85){
+					serve[arr] = a + 0.85;
+				}
+				else if( serve[arr] - a > 0.86 && serve[arr] - a <= 1){
+					serve[arr] = a + 1.0;
+				}
+				}
+
 				/*stampa 1° quantità x voti*/	
-				document.getElementById("quanti").innerHTML = i.toFixed(0) + " volte " + serve.toFixed(2);
+				document.getElementById("quanti").innerHTML = i.toFixed(0) + " volte " + serve[0].toFixed(2);
 				/*stampa 2° quantità x voti*/	
-				document.getElementById("quanti2").innerHTML = j.toFixed(0) + " volte " + serve2.toFixed(2);
+				document.getElementById("quanti2").innerHTML = j.toFixed(0) + " volte " + serve[1].toFixed(2);
 				/*stampa 3° quantità x voti*/	
-				document.getElementById("quanti3").innerHTML = k.toFixed(0) + " volte " + serve3.toFixed(2);
+				document.getElementById("quanti3").innerHTML = k.toFixed(0) + " volte " + serve[2].toFixed(2);
  
 			}  
 		}
 	</script>
-
 </body>
 </html>
