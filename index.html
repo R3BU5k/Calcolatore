@@ -21,10 +21,10 @@
 
 	<meta name="google-site-verification" content="FXqH12D4zrLtCQsUV---DCmlZ2OugcvokW9NnKR_-U8" />
 	<link rel="icon" type="image/png" href="calc.png"/>
-	<link href="layout.css" rel="stylesheet">
+	<link rel="stylesheet" id="theme-style" href="light.css">
 </head>
 <body>
-
+	<input type="button" id="theme-toggle">
 	<h1>Calcola la media</h1>
 	<div class="container">
 
@@ -46,6 +46,17 @@
 		<div id="quanti3"></div>
 	</div>
 	<script>
+			//script tema manuale
+			const themeToggle = document.getElementById('theme-toggle');
+        	const themeStyle = document.getElementById('theme-style');
+
+        	themeToggle.addEventListener('click', () => {
+            if (themeStyle.getAttribute('href') === 'light.css') {
+                themeStyle.href = 'dark.css';
+            } else {
+                themeStyle.href = 'light.css';
+            }
+            });
 		function validateInput(input) {
 	  		input.value = input.value.replace(/[^0-9.,]/g, '');
 		}
