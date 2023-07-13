@@ -25,15 +25,15 @@
 	<link rel="stylesheet" id="theme-style" href="light.css">
 </head>
 <body>
-	<input type="button" id="theme-toggle">
+<input type="button" id="theme-toggle">
 	<h1>Calcola la media</h1>
 	<div class="container">
 
 		<p>Inserisci la media da ottenere:</p>
-		<input type="text" id="media" oninput="validateInput(this)" />
+		<input type="text" id="media" oninput="validateInput1(this)" />
 
-		<p>Inserisci il valore massimo ottenibile (almeno +0.01 rispetto alla media desiderata):</p>
-		<input type="text" id="vmax" oninput="validateInput(this)" />
+		<p>Inserisci il valore massimo ottenibile (intero e min +0.01 della media desiderata):</p>
+		<input type="text" id="vmax" oninput="validateInput2(this)" />
 		
 		<p>Inserisci una serie di numeri separati da una virgola:</p>
 		<input type="text" id="numbers" oninput="validateInput(this)" />
@@ -46,7 +46,7 @@
 		<div id="quanti"></div>
 		<p id="oppure"></p>
 		<div id="quanti2"></div>
-
+		<p id="oppure2"></p>
 		<div id="quanti3"></div>
 	</div>
 	<script>
@@ -61,8 +61,15 @@
                 themeStyle.href = 'light.css';
             }
             });
+
 		function validateInput(input) {
 	  		input.value = input.value.replace(/[^0-9.,]/g, '');
+		}
+		function validateInput1(input) {
+	  		input.value = input.value.replace(/[^0-9.]/g, '');
+		}
+		function validateInput2(input) {
+	  		input.value = input.value.replace(/[^0-9]/g, '');
 		}
 		
 		function calculate() {
@@ -105,10 +112,15 @@
 					document.getElementById("oppure").innerHTML = "";
 				}else{
 					document.getElementById("oppure").innerHTML = "Oppure";
+					document.getElementById("oppure2").innerHTML = "Oppure";
 					/*calcolo 1° quantità (i) x voti (serve)*/	
 					var i = 1;
 					serve[0] = (valore*(numbers.length+i)-sum)/i;
 					while(serve[0] > vmax || serve[0] < 0){
+						if(i == 1000){
+							document.getElementById("oppure").innerHTML = "L'approssimazione è troppo grande!";
+							return false;
+						}
 						i +=1;
 						serve[0] = (valore*(numbers.length+i)-sum)/i;
 					}
@@ -150,11 +162,20 @@
 	
 					/*stampa 1° quantità x voti*/	
 					document.getElementById("quanti").innerHTML = i.toFixed(0) + " volte " + serve[0].toFixed(2);
-					/*stampa 2° quantità x voti*/	
-					document.getElementById("quanti2").innerHTML = j.toFixed(0) + " volte " + serve[1].toFixed(2);
-					/*stampa 3° quantità x voti*/	
-					document.getElementById("quanti3").innerHTML = k.toFixed(0) + " volte " + serve[2].toFixed(2);
-	 
+					/*stampa 2° quantità x voti se non uguale alla precedente*/
+					
+					
+					if(serve[1] != serve[0]){
+						document.getElementById("quanti2").innerHTML = j.toFixed(0) + " volte " + serve[1].toFixed(2);
+					}else{
+						document.getElementById("oppure").innerHTML = "";
+					}
+					/*stampa 3° quantità x voti se non uguale alla precedente*/
+					if(serve[2] != serve[1]){
+						document.getElementById("quanti3").innerHTML = k.toFixed(0) + " volte " + serve[2].toFixed(2);
+					}else{
+						document.getElementById("oppure2").innerHTML = "";
+					}
 				}
 			}
 		}
