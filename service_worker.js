@@ -34,10 +34,10 @@ const resourcesToPrecache = [
     '/',
     'index.html',
     'scripts.js',    
-    './images/calc.ico',
-    './images/logo.ico',
-    './images/logo192.png',
-    './styles/light.css',
+    'images/calc.ico',
+    'images/logo.ico',
+    'images/logo192.png',
+    'styles/light.css',
     
-    './images/theme.png'
+    'images/theme.png'
 ];
