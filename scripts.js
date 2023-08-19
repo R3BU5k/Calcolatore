@@ -3,10 +3,10 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeStyle = document.getElementById('theme-style');
 
 themeToggle.addEventListener('click', () => {
-if (themeStyle.getAttribute('href') === '/styles/light.css') {
-    themeStyle.href = '/styles/dark.css';
+if (themeStyle.getAttribute('href') === 'styles/light.css') {
+    themeStyle.href = 'styles/dark.css';
 } else {
-    themeStyle.href = '/styles/light.css';
+    themeStyle.href = 'styles/light.css';
 }
 });
 
