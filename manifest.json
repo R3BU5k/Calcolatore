@@ -1,0 +1,23 @@
+{
+  "name": "Calcola la media by R3BU5", 
+  "short_name": "Calcola Voti", 
+  "description": "Benvenuto! Questa web app ti permette di calcolare i voti mancanti necessari per raggiungere la media desiderata in modo semplice e veloce.Il funzionamento è semplice: inserisci i voti che hai ottenuto finora e il voto massimo ottenibile, specifica la media desiderata e lascia che l'algoritmo faccia il resto.",
+
+  "start_url": ".",
+  "theme_color": "#4287f5",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "icons":[
+    {
+      "src":"images/logo192r.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src":"images/logo512r.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+
+}
