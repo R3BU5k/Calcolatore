@@ -1,5 +1,5 @@
 #theme-toggle {
-    background-image: url("images/theme.png");
+    background-image: url("../images/theme.png");
     height:60px;
     width:60px;
     transition: 0.5s linear;
