@@ -17,6 +17,12 @@
       "src":"images/logo512r.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "images/maskable_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable" 
     }
   ]
 
