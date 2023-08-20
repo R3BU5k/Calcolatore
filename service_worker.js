@@ -29,7 +29,7 @@ self.addEventListener('fetch', event => {
     );
 });
 
-const cacheName = 'cache-v1.6'; //cache version to modify to load
+const cacheName = 'cache-v1.7'; //cache version to modify to load
 const resourcesToPrecache = [
     '/',
     'index.html',
