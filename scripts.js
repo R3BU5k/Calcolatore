@@ -3,10 +3,10 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeStyle = document.getElementById('theme-style');
 
 themeToggle.addEventListener('click', () => {
-if (themeStyle.getAttribute('href') === 'styles/light.css') {
-    themeStyle.href = 'styles/dark.css';
+if (themeStyle.getAttribute('href') === '/styles/light.css') {
+    themeStyle.href = '/styles/dark.css';
 } else {
-    themeStyle.href = 'styles/light.css';
+    themeStyle.href = '/styles/light.css';
 }
 });
 
@@ -118,7 +118,6 @@ if(valore >= vmax){
             }
             write += 1;
         }
-        
         document.getElementById("alternativa").innerHTML = ""; //svuota il div con le varianti per evitare sovrascritture
         if(i[0] > 2 && i[0] < 5 && serve[0] < vmax){
         let nums = new Array(10);
@@ -127,14 +126,14 @@ if(valore >= vmax){
         for(let m = 0; m < i[0]; m++){
             nums[m] = 1;
         }
-
-        while (counter != 15) //quante varianti della somma da mostrare (3)
+        var diff = 0;
+        while (counter != 3) //quante varianti della somma da mostrare (3)
         {
             for (let counter = 0; counter < i[0]; counter++)
             {
                 test += nums[counter];
             }
-            if(test == valore*(numbers.length+i[0])-sum){
+            if(test <= (valore*(numbers.length+i[0])-sum)-0.5 && test <= (valore*(numbers.length+i[0])-sum)+0.5){
                 for (let counter = 0; counter < i[0]; counter++)
                 {
                     save[counter] = nums[counter];
@@ -148,12 +147,15 @@ if(valore >= vmax){
             }else{
                 test = 0;
             }
-            nums[0] += 1;
+            nums[0] += 0.5;
+            if(nums[0] > vmax){
+                diff = nums[0] - vmax;
+            }
             for (let counter = 0; counter < i[0]; counter++)
             {
-                if(nums[counter] == vmax+1){
-                    nums[counter] = 1;
-                    nums[counter+1] += 1;
+                if(nums[counter] == vmax+diff){
+                    nums[counter] = diff;
+                    nums[counter+1] += diff;
                 }           
             } 
         }
@@ -176,7 +178,7 @@ if(valore >= vmax){
                     {
                         test2 += nums2[counter2];
                     }
-                    if(test2 == valore*(numbers.length+i[prova])-sum){
+                    if(test2 >= (valore*(numbers.length+i[prova])-sum)-0.5 && test2 <= (valore*(numbers.length+i[prova])-sum)+0.5){
                         for (let counter2 = 0; counter2 < i[prova]; counter2++)
                         {
                             save2[counter2] = nums2[counter2];
@@ -190,12 +192,15 @@ if(valore >= vmax){
                     }else{
                         test2 = 0;
                     }
-                    nums2[0] += 1;
+                    nums2[0] += 0.5;
+                    if(nums2[0] > vmax){
+                        diff = nums2[0] - vmax;
+                    }
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
-                        if(nums2[counter2] == vmax+1){
-                            nums2[counter2] = 1;
-                            nums2[counter2+1] += 1;
+                        if(nums2[counter2] == vmax+diff){
+                            nums2[counter2] = diff;
+                            nums2[counter2+1] += diff;
                         }           
                     }   
                 }
