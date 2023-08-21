@@ -29,7 +29,7 @@ self.addEventListener('fetch', event => {
     );
 });
 
-const cacheName = 'cache-v2.05'; //cache version to modify to load
+const cacheName = 'cache-v2.06'; //cache version to modify to load
 const resourcesToPrecache = [
     '/',
     'index.html',
@@ -39,5 +39,6 @@ const resourcesToPrecache = [
     'images/logo192.png',
     'styles/light.css',
     'styles/dark.css',
-    'images/theme.png'
+    'images/theme.png',
+    'icons/browserconfig.xml'
 ];
