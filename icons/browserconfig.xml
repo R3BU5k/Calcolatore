@@ -3,7 +3,7 @@
     <msapplication>
         <tile>
             <square150x150logo src="https://r3bu5k.github.io/Calcolatore/icons/mstile-150x150.png"/>
-            <TileColor>#da532c</TileColor>
+            <TileColor>#00000000</TileColor>
         </tile>
     </msapplication>
 </browserconfig>
