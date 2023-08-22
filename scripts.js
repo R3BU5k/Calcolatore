@@ -118,7 +118,7 @@ if(valore >= vmax){
             }
             write += 1;
         }
-        document.getElementById("alternativa").innerHTML = ""; //svuota il div con le varianti per evitare sovrascritture
+        /*document.getElementById("alternativa").innerHTML = ""; //svuota il div con le varianti per evitare sovrascritture
         if(i[0] > 2 && i[0] < 5 && serve[0] < vmax){
         let nums = new Array(10);
         let test = 0, counter = 0;
@@ -207,7 +207,7 @@ if(valore >= vmax){
                 }
                 document.getElementById("alternativa").innerHTML += "<br>";
             prova += 1;
-        }
+        }*/
     }
 }
 }
