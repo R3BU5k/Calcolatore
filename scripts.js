@@ -133,7 +133,7 @@ if(valore >= vmax){
             {
                 test += nums[counter];
             }
-            if(test <= (valore*(numbers.length+i[0])-sum)-0.5 && test <= (valore*(numbers.length+i[0])-sum)+0.5){
+            if(test <= (valore*(numbers.length+i[0])-sum)-0.75 && test <= (valore*(numbers.length+i[0])-sum)+0.75){
                 for (let counter = 0; counter < i[0]; counter++)
                 {
                     save[counter] = nums[counter];
@@ -147,7 +147,7 @@ if(valore >= vmax){
             }else{
                 test = 0;
             }
-            nums[0] += 0.5;
+            nums[0] += 0.75;
             if(nums[0] > vmax){
                 diff = nums[0] - vmax;
             }
@@ -178,7 +178,7 @@ if(valore >= vmax){
                     {
                         test2 += nums2[counter2];
                     }
-                    if(test2 >= (valore*(numbers.length+i[prova])-sum)-0.5 && test2 <= (valore*(numbers.length+i[prova])-sum)+0.5){
+                    if(test2 >= (valore*(numbers.length+i[prova])-sum)-0.75 && test2 <= (valore*(numbers.length+i[prova])-sum)+0.75){
                         for (let counter2 = 0; counter2 < i[prova]; counter2++)
                         {
                             save2[counter2] = nums2[counter2];
@@ -192,7 +192,7 @@ if(valore >= vmax){
                     }else{
                         test2 = 0;
                     }
-                    nums2[0] += 0.5;
+                    nums2[0] += 0.75;
                     if(nums2[0] > vmax){
                         diff = nums2[0] - vmax;
                     }
