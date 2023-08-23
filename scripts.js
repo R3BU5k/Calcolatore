@@ -118,22 +118,22 @@ if(valore >= vmax){
             }
             write += 1;
         }
-        /*document.getElementById("alternativa").innerHTML = ""; //svuota il div con le varianti per evitare sovrascritture
-        if(i[0] > 2 && i[0] < 5 && serve[0] < vmax){
+        document.getElementById("alternativa").innerHTML = ""; //svuota il div con le varianti per evitare sovrascritture
+        if(i[0] > 2 && i[0] < 5 && serve[0] < vmax-1){
         let nums = new Array(10);
         let test = 0, counter = 0;
         var save = new Array(10);
         for(let m = 0; m < i[0]; m++){
             nums[m] = 1;
         }
-        var diff = 0;
-        while (counter != 3) //quante varianti della somma da mostrare (3)
+        while (counter != 15) //quante varianti della somma da mostrare (3)
         {
+            var diff = 0;
             for (let counter = 0; counter < i[0]; counter++)
             {
                 test += nums[counter];
             }
-            if(test <= (valore*(numbers.length+i[0])-sum)-0.75 && test <= (valore*(numbers.length+i[0])-sum)+0.75){
+            if(test >= (serve[0]*i[0])-0.75){
                 for (let counter = 0; counter < i[0]; counter++)
                 {
                     save[counter] = nums[counter];
@@ -147,15 +147,13 @@ if(valore >= vmax){
             }else{
                 test = 0;
             }
-            nums[0] += 0.75;
-            if(nums[0] > vmax){
-                diff = nums[0] - vmax;
-            }
+            nums[0] += 0.5;
             for (let counter = 0; counter < i[0]; counter++)
             {
-                if(nums[counter] == vmax+diff){
-                    nums[counter] = diff;
-                    nums[counter+1] += diff;
+                if(nums[counter] >= vmax){
+                    diff = vmax - nums[counter];
+                    nums[counter] = vmax;
+                    nums[counter+1] += 0.5;
                 }           
             } 
         }
@@ -164,21 +162,21 @@ if(valore >= vmax){
 
         var prova = 1;
         while(prova < 3){ //3 e' il numero totale di quantita' di indici diversi per le alternative compreso il primo (sopra) esempio: Con 2,3,4 voti
-            if(i[prova] > 2 && i[prova] < 6 && serve[prova] < vmax && serve[prova] != serve[prova-1]){
+            if(i[prova] > 2 && i[prova] < 6 && serve[prova] < vmax-1 && serve[prova] != serve[prova-1]){
                 let nums2 = new Array(10);
                 let test2 = 0, counter2 = 0;
                 var save2 = new Array(10);
                 for(let m2 = 0; m2 < i[prova]; m2++){
                     nums2[m2] = 1;
                 }
-
-                while (counter2 != 15) //quante varianti della somma da mostrare (3)
+                var diff2 = 0;
+                while (counter2 != 3) //quante varianti della somma da mostrare (3)
                 {
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
                         test2 += nums2[counter2];
                     }
-                    if(test2 >= (valore*(numbers.length+i[prova])-sum)-0.75 && test2 <= (valore*(numbers.length+i[prova])-sum)+0.75){
+                    if(test2 >= (serve[prova]*i[prova])-0.75){
                         for (let counter2 = 0; counter2 < i[prova]; counter2++)
                         {
                             save2[counter2] = nums2[counter2];
@@ -192,22 +190,20 @@ if(valore >= vmax){
                     }else{
                         test2 = 0;
                     }
-                    nums2[0] += 0.75;
-                    if(nums2[0] > vmax){
-                        diff = nums2[0] - vmax;
-                    }
+                    nums2[0] += 0.5;
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
-                        if(nums2[counter2] == vmax+diff){
-                            nums2[counter2] = diff;
-                            nums2[counter2+1] += diff;
+                        if(nums2[counter2] >= vmax){
+                            diff2 = vmax - nums2[counter2];
+                            nums2[counter2] = vmax;
+                            nums2[counter2+1] += 0.5;
                         }           
                     }   
                 }
                 }
                 document.getElementById("alternativa").innerHTML += "<br>";
             prova += 1;
-        }*/
+        }
     }
 }
 }
