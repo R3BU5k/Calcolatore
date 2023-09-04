@@ -126,6 +126,7 @@ if(valore >= vmax){
         for(let m = 0; m < i[0]; m++){
             nums[m] = 1;
         }
+        var block = 0; //block evita blocchi se non vengono trovate abbastanza combinazioni da stampare
         while (counter != 15) //quante varianti della somma da mostrare (3)
         {
             var diff = 0;
@@ -133,7 +134,7 @@ if(valore >= vmax){
             {
                 test += nums[counter];
             }
-            if(test >= (serve[0]*i[0])-0.75){
+            if(test >= (serve[0]*i[0])-0.15 && test <= (serve[0]*i[0])+0.15){
                 for (let counter = 0; counter < i[0]; counter++)
                 {
                     save[counter] = nums[counter];
@@ -146,14 +147,18 @@ if(valore >= vmax){
                 counter++;
             }else{
                 test = 0;
+                block += 1;
+                if(block == 50000){
+                    counter = 15;
+                }
             }
-            nums[0] += 0.5;
+            nums[0] += 0.25;
             for (let counter = 0; counter < i[0]; counter++)
             {
                 if(nums[counter] >= vmax){
                     diff = vmax - nums[counter];
                     nums[counter] = vmax;
-                    nums[counter+1] += 0.5;
+                    nums[counter+1] += 0.25;
                 }           
             } 
         }
@@ -170,13 +175,14 @@ if(valore >= vmax){
                     nums2[m2] = 1;
                 }
                 var diff2 = 0;
+                var block2 = 0; //block evita blocchi se non vengono trovate abbastanza combinazioni da stampare
                 while (counter2 != 3) //quante varianti della somma da mostrare (3)
                 {
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
                         test2 += nums2[counter2];
                     }
-                    if(test2 >= (serve[prova]*i[prova])-0.75){
+                    if(test2 >= (serve[prova]*i[prova])-0.15 && test2 <= (serve[prova]*i[prova])+0.15){
                         for (let counter2 = 0; counter2 < i[prova]; counter2++)
                         {
                             save2[counter2] = nums2[counter2];
@@ -189,14 +195,18 @@ if(valore >= vmax){
                         counter2++;
                     }else{
                         test2 = 0;
+                        block2 += 1;
+                        if(block2 == 5000){
+                            counter2 = 5;
+                        }
                     }
-                    nums2[0] += 0.5;
+                    nums2[0] += 0.25;
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
                         if(nums2[counter2] >= vmax){
                             diff2 = vmax - nums2[counter2];
                             nums2[counter2] = vmax;
-                            nums2[counter2+1] += 0.5;
+                            nums2[counter2+1] += 0.25;
                         }           
                     }   
                 }
