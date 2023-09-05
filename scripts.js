@@ -147,7 +147,7 @@ if(valore >= vmax){
                 counter++;
             }else{
                 test = 0;
-                block += 1;
+                block += 1; //incrementa block quando non vengono trovate combinazioni utili
                 if(block == 50000){
                     counter = 15;
                 }
@@ -155,10 +155,10 @@ if(valore >= vmax){
             nums[0] += 0.25;
             for (let counter = 0; counter < i[0]; counter++)
             {
-                if(nums[counter] >= vmax){
+                if(nums[counter] > vmax){
                     diff = vmax - nums[counter];
                     nums[counter] = vmax;
-                    nums[counter+1] += 0.25;
+                    nums[counter+1] += 0.25 + diff;
                 }           
             } 
         }
@@ -167,16 +167,16 @@ if(valore >= vmax){
 
         var prova = 1;
         while(prova < 3){ //3 e' il numero totale di quantita' di indici diversi per le alternative compreso il primo (sopra) esempio: Con 2,3,4 voti
-            if(i[prova] > 2 && i[prova] < 6 && serve[prova] < vmax-1 && serve[prova] != serve[prova-1]){
+            if(i[prova] > 2 && i[prova] < 6 && serve[prova] < vmax-1){
                 let nums2 = new Array(10);
                 let test2 = 0, counter2 = 0;
                 var save2 = new Array(10);
                 for(let m2 = 0; m2 < i[prova]; m2++){
-                    nums2[m2] = 1;
+                    nums2[m2] = 3;
                 }
                 var diff2 = 0;
                 var block2 = 0; //block evita blocchi se non vengono trovate abbastanza combinazioni da stampare
-                while (counter2 != 3) //quante varianti della somma da mostrare (3)
+                while (counter2 != 5) //quante varianti della somma da mostrare (3)
                 {
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
@@ -203,7 +203,7 @@ if(valore >= vmax){
                     nums2[0] += 0.25;
                     for (let counter2 = 0; counter2 < i[prova]; counter2++)
                     {
-                        if(nums2[counter2] >= vmax){
+                        if(nums2[counter2] > vmax){
                             diff2 = vmax - nums2[counter2];
                             nums2[counter2] = vmax;
                             nums2[counter2+1] += 0.25;
