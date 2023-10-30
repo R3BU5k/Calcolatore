@@ -125,6 +125,9 @@ button:active {
     margin-bottom: 4%;
 }
 @media (max-width: 1000px){
+    .cookie-banner > p, button{
+        margin-right: 5%;
+    }
     h1{
         /*border: 8px solid rgb(255, 0, 0);*/
         flex-basis: 60%;
