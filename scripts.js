@@ -35,6 +35,7 @@ window.addEventListener('load', () => {
         acceptCookiesButton.addEventListener('click', () => {
             setCookie('cookie-consent', 'accepted', 365); // Imposta un cookie per registrare il consenso
             cookieBanner.style.display = 'none'; // Nasconde il banner
+            shareThis.style.display = 'block';
         });
     }
 });
