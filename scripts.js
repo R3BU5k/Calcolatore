@@ -1,13 +1,64 @@
-//script tema manuale
+// Funzione per impostare un cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = 'expires=' + date.toUTCString();
+    document.cookie = name + '=' + value + ';' + expires + ';path=/';
+}
+
+// Funzione per ottenere il valore di un cookie
+function getCookie(name) {
+    const cookieName = name + '=';
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return '';
+}
+
+window.addEventListener('load', () => {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesButton = document.getElementById('accept-cookies');
+    const shareThis = document.getElementById('sharethis-inline-share-buttons');
+    
+    // Verifica se l'utente ha già accettato i cookie
+    if (!getCookie('cookie-consent')) {
+        cookieBanner.style.display = 'block'; // Mostra il banner se non hai il consenso
+        shareThis.style.display = 'none'; // Nasconde la sezione sharing
+
+        acceptCookiesButton.addEventListener('click', () => {
+            setCookie('cookie-consent', 'accepted', 365); // Imposta un cookie per registrare il consenso
+            cookieBanner.style.display = 'none'; // Nasconde il banner
+        });
+    }
+});
+
+//script tema manuale con salvataggio su cookie
 const themeToggle = document.getElementById('theme-toggle');
 const themeStyle = document.getElementById('theme-style');
 
+// Leggi il cookie al caricamento della pagina
+window.addEventListener('load', () => {
+    const savedTheme = getCookie('theme');
+    if (savedTheme) {
+        themeStyle.href = savedTheme;
+    }
+});
+
 themeToggle.addEventListener('click', () => {
-if (themeStyle.getAttribute('href') === 'styles/light.css') {
-    themeStyle.href = 'styles/dark.css';
-} else {
-    themeStyle.href = 'styles/light.css';
-}
+    if (themeStyle.getAttribute('href') === 'styles/light.css') {
+        themeStyle.href = 'styles/dark.css';
+        setCookie('theme', 'styles/dark.css', 365); // Salva il tema nei cookie per un anno
+    } else {
+        themeStyle.href = 'styles/light.css';
+        setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
+    }
 });
 
 function validateInput(input) {
