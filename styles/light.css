@@ -67,6 +67,7 @@ h1{
 .sharethis-inline-share-buttons{
     border: 0px;
     margin-top: 2%;
+    display: none;
 }
 input{
     text-align: center;
