@@ -32,33 +32,43 @@ window.addEventListener('load', () => {
         cookieBanner.style.display = 'block'; // Mostra il banner se non hai il consenso
         shareThis.style.display = 'none'; // Nasconde la sezione sharing
 
+        // script tema manuale senza salvataggio su cookie
+        const themeToggleNoC = document.getElementById('theme-toggle');
+        const themeStyleNoC = document.getElementById('theme-style');
+
+        themeToggleNoC.addEventListener('click', () => {
+            if (themeStyleNoC.getAttribute('href') === 'styles/light.css') {
+                themeStyleNoC.href = 'styles/dark.css';
+            } else {
+                themeStyleNoC.href = 'styles/light.css';
+            }
+        });
+
         acceptCookiesButton.addEventListener('click', () => {
             setCookie('cookie-consent', 'accepted', 365); // Imposta un cookie per registrare il consenso
             cookieBanner.style.display = 'none'; // Nasconde il banner
             shareThis.style.display = 'block';
         });
-    }
-});
-
-//script tema manuale con salvataggio su cookie
-const themeToggle = document.getElementById('theme-toggle');
-const themeStyle = document.getElementById('theme-style');
-
-// Leggi il cookie al caricamento della pagina
-window.addEventListener('load', () => {
-    const savedTheme = getCookie('theme');
-    if (savedTheme) {
-        themeStyle.href = savedTheme;
-    }
-});
-
-themeToggle.addEventListener('click', () => {
-    if (themeStyle.getAttribute('href') === 'styles/light.css') {
-        themeStyle.href = 'styles/dark.css';
-        setCookie('theme', 'styles/dark.css', 365); // Salva il tema nei cookie per un anno
     } else {
-        themeStyle.href = 'styles/light.css';
-        setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
+        // L'utente ha già accettato i cookie, quindi puoi eseguire il codice dal commento "script tema manuale con salvataggio su cookie" subito
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeStyle = document.getElementById('theme-style');
+
+        // Leggi il cookie al caricamento della pagina
+        const savedTheme = getCookie('theme');
+        if (savedTheme) {
+            themeStyle.href = savedTheme;
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (themeStyle.getAttribute('href') === 'styles/light.css') {
+                themeStyle.href = 'styles/dark.css';
+                setCookie('theme', 'styles/dark.css', 365); // Salva il tema nei cookie per un anno
+            } else {
+                themeStyle.href = 'styles/light.css';
+                setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
+            }
+        });
     }
 });
 
