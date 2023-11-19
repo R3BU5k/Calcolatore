@@ -60,20 +60,20 @@
 	<div class="container">
 
 		<p>Inserisci la media da ottenere:</p>
-		<input type="text" id="media" placeholder="5.5" oninput="validateInput1(this)" />
+		<input type="text" id="media" placeholder="5.5" oninput="validateInput1(this)" tabindex="1" />
 
 		<p>Inserisci il valore massimo ottenibile (intero e min +0.01 della media desiderata):</p>
-		<input type="text" pattern="\d*" id="vmax" placeholder="10" oninput="validateInput2(this)" />
+		<input type="text" pattern="\d*" id="vmax" placeholder="10" oninput="validateInput2(this)" tabindex="2" />
 		
 		<p>Inserisci una serie di numeri separati da una virgola:</p>
-		<input type="text" id="numbers" placeholder="7.15,6,4,8.5,5" oninput="validateInput(this)" />
-		<button id="button" onclick="calculate()">Calcola</button>
+		<input type="text" id="numbers" placeholder="7.15,6,4,8.5,5" oninput="validateInput(this)" tabindex="3" />
+		<button id="button" onclick="calculate()" tabindex="4" >Calcola</button>
 
 		<p id="testo1"></p>
 		<div id="result"></div>
 
     	<p id="testo2"></p>
-		<button id="button2" onclick="show()">Mostra/Nascondi alternative<br>[BETA]</button>
+		<button id="button2" onclick="show()" tabindex="5" >Mostra/Nascondi alternative<br>[BETA]</button>
 
 		<div id="quanti"></div>
 		<p id="errore"></p>
