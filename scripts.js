@@ -48,12 +48,12 @@ window.addEventListener('load', () => {
         }
 
         themeToggle.addEventListener('click', () => {
-            if (themeStyle.getAttribute('href') === '/styles/light.css') {
-                themeStyle.href = '/styles/dark.css';
-                setCookie('theme', '/styles/dark.css', 365); // Salva il tema nei cookie per un anno
+            if (themeStyle.getAttribute('href') === 'styles/light.css') {
+                themeStyle.href = 'styles/dark.css';
+                setCookie('theme', 'styles/dark.css', 365); // Salva il tema nei cookie per un anno
             } else {
-                themeStyle.href = '/styles/light.css';
-                setCookie('theme', '/styles/light.css', 365); // Salva il tema nei cookie per un anno
+                themeStyle.href = 'styles/light.css';
+                setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
             }
         });
     }
