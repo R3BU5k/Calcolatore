@@ -44,29 +44,30 @@
 	<link rel="stylesheet" id="theme-style" href="styles/light.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Itim">
 	<link rel="manifest" href="manifest.json"> <!-- PWA -->
-	<meta name="theme-color" content="#00FF15" />
+	<meta name="theme-color" content="#00FF15" class="content" />
 	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=64b57269cf4bea0012ddd6ce&product=inline-share-buttons' async='async'></script>
 
 </head>
 <body oncontextmenu="return false">
 <input type="button" id="theme-toggle">
 	<h1>Calcola la media</h1>
-
+	
 	<div id="cookie-banner" class="cookie-banner">
 		<p>Questo sito utilizza i cookie per garantire un'esperienza utente migliore. Accetti l'uso dei cookie?</p>
 		<button id="accept-cookies">Accetta</button>
 	</div>
 	
-	<div class="container">
+	<input type="color" id="coloreInput" name="coloreInput" onchange="cambiaColore()">
+	<div class="container coloreBordo">
 
 		<p>Inserisci la media da ottenere:</p>
-		<input type="text" id="media" placeholder="5.5" oninput="validateInput1(this)" tabindex="1" />
+		<input type="text" class="coloreBordo" id="media" placeholder="5.5" oninput="validateInput1(this)" tabindex="1" />
 
 		<p>Inserisci il valore massimo ottenibile (intero e min +0.01 della media desiderata):</p>
-		<input type="text" pattern="\d*" id="vmax" placeholder="10" oninput="validateInput2(this)" tabindex="2" />
+		<input type="text" class="coloreBordo" pattern="\d*" id="vmax" placeholder="10" oninput="validateInput2(this)" tabindex="2" />
 		
 		<p>Inserisci una serie di numeri separati da una virgola:</p>
-		<input type="text" id="numbers" placeholder="7.15,6,4,8.5,5" oninput="validateInput(this)" tabindex="3" />
+		<input type="text" class="coloreBordo" id="numbers" placeholder="7.15,6,4,8.5,5" oninput="validateInput(this)" tabindex="3" />
 		<button id="button" onclick="calculate()" tabindex="4" >Calcola</button>
 
 		<p id="testo1"></p>
