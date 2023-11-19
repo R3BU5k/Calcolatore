@@ -34,9 +34,14 @@ window.addEventListener('load', () => {
             setCookie('cookie-consent', 'accepted', 365); // Imposta un cookie per registrare il consenso
             cookieBanner.style.display = 'none'; // Nasconde il banner
             cambiaColore(); // Applica il colore dopo che l'utente ha accettato i cookie
+            setThemeCookie(); // Imposta il cookie per il tema solo se l'utente accetta
         });
+    } else {
+        // Se l'utente ha già accettato i cookie, imposta il tema
+        setThemeFromCookie();
     }
 });
+
 
 // Funzione per cambiare il colore
 function cambiaColore() {
@@ -76,6 +81,30 @@ document.addEventListener("DOMContentLoaded", function () {
         cambiaColore();
     }
 });
+
+// Funzione per impostare il tema dal cookie
+function setThemeFromCookie() {
+    const themeStyle = document.getElementById('theme-style');
+    const savedTheme = getCookie('theme');
+    if (savedTheme) {
+        themeStyle.href = savedTheme;
+    }
+}
+
+// Funzione per impostare il tema e salvare nel cookie
+function setThemeCookie() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeStyle = document.getElementById('theme-style');
+    themeToggle.addEventListener('click', () => {
+        if (themeStyle.getAttribute('href') === 'styles/light.css') {
+            themeStyle.href = 'styles/dark.css';
+            setCookie('theme', 'styles/dark.css', 365); // Salva il tema nei cookie per un anno
+         } else {
+            themeStyle.href = 'styles/light.css';
+            setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
+            }
+    });
+}
 
 function validateInput(input) {
   input.value = input.value.replace(/[^0-9.,]/g, '');
