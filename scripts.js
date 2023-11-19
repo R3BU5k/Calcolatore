@@ -37,6 +37,7 @@ window.addEventListener('load', () => {
         acceptCookiesButton.addEventListener('click', () => {
             setCookie('cookie-consent', 'accepted', 365); // Imposta un cookie per registrare il consenso
             cookieBanner.style.display = 'none'; // Nasconde il banner
+            cambiaColore(); // Applica il colore dopo che l'utente ha accettato i cookie
         });
     } else {
         // L'utente ha già accettato i cookie, quindi puoi eseguire il codice dal commento "script tema manuale con salvataggio su cookie" subito
@@ -56,6 +57,45 @@ window.addEventListener('load', () => {
                 setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
             }
         });
+    }
+});
+
+// Funzione per cambiare il colore
+function cambiaColore() {
+    // Ottieni il valore del colore dall'input
+    var coloreSelezionato = document.getElementById("coloreInput").value;
+
+    // Ottieni gli elementi
+    var elementiTesto = document.getElementsByClassName("colore");
+    var elementiBordo = document.getElementsByClassName("coloreBordo");
+    var elementiButton = document.getElementsByTagName("button");
+    var metaTag = document.querySelector('meta[name="theme-color"]');
+
+    // Itera sugli elementi e cambia il colore di ciascuno
+    for (var i = 0; i < elementiTesto.length; i++) {
+        elementiTesto[i].style.color = coloreSelezionato;
+    }
+    for (var i = 0; i < elementiBordo.length; i++) {
+        elementiBordo[i].style.borderColor = coloreSelezionato;
+    }
+    for (var i = 0; i < elementiButton.length; i++) {
+        elementiButton[i].style.backgroundColor = coloreSelezionato;
+    }
+    metaTag.content = coloreSelezionato;
+
+    // Salva il colore nel cookie per persistenza solo se l'utente ha accettato i cookie
+    if (getCookie('cookie-consent') === 'accepted') {
+        setCookie("colorePreferito", coloreSelezionato, 30);
+    }
+}
+
+// Quando la pagina si carica, controlla se c'è un colore salvato nel cookie
+document.addEventListener("DOMContentLoaded", function () {
+    var coloreSalvato = getCookie("colorePreferito");
+    if (coloreSalvato) {
+        // Se c'è un colore salvato, applicalo alla pagina
+        document.getElementById("coloreInput").value = coloreSalvato;
+        cambiaColore();
     }
 });
 
