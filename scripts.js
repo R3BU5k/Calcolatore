@@ -22,89 +22,42 @@ function getCookie(name) {
     return '';
 }
 
+const themeToggle = document.getElementById('theme-toggle');
+const themeStyle = document.getElementById('theme-style');
+
 window.addEventListener('load', () => {
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptCookiesButton = document.getElementById('accept-cookies');
-
+    
     // Verifica se l'utente ha già accettato i cookie
     if (!getCookie('cookie-consent')) {
         cookieBanner.style.display = 'block'; // Mostra il banner se non hai il consenso
+        themeToggle.style.display = 'none';
 
         acceptCookiesButton.addEventListener('click', () => {
             setCookie('cookie-consent', 'accepted', 365); // Imposta un cookie per registrare il consenso
             cookieBanner.style.display = 'none'; // Nasconde il banner
-            cambiaColore(); // Applica il colore dopo che l'utente ha accettato i cookie
-            setThemeCookie(); // Imposta il cookie per il tema solo se l'utente accetta
         });
     } else {
-        // Se l'utente ha già accettato i cookie, imposta il tema
-        setThemeFromCookie();
-    }
-});
+        // L'utente ha già accettato i cookie, quindi puoi eseguire il codice dal commento "script tema manuale con salvataggio su cookie" subito
 
+        // Leggi il cookie al caricamento della pagina
+        const savedTheme = getCookie('theme');
+        if (savedTheme) {
+            themeStyle.href = savedTheme;
+        }
 
-// Funzione per cambiare il colore
-function cambiaColore() {
-    // Ottieni il valore del colore dall'input
-    var coloreSelezionato = document.getElementById("coloreInput").value;
-
-    // Ottieni gli elementi
-    var elementiTesto = document.getElementsByClassName("colore");
-    var elementiBordo = document.getElementsByClassName("coloreBordo");
-    var elementiButton = document.getElementsByTagName("button");
-    var metaTag = document.querySelector('meta[name="theme-color"]');
-
-    // Itera sugli elementi e cambia il colore di ciascuno
-    for (var i = 0; i < elementiTesto.length; i++) {
-        elementiTesto[i].style.color = coloreSelezionato;
-    }
-    for (var i = 0; i < elementiBordo.length; i++) {
-        elementiBordo[i].style.borderColor = coloreSelezionato;
-    }
-    for (var i = 0; i < elementiButton.length; i++) {
-        elementiButton[i].style.backgroundColor = coloreSelezionato;
-    }
-    metaTag.content = coloreSelezionato;
-
-    // Salva il colore nel cookie per persistenza solo se l'utente ha accettato i cookie
-    if (getCookie('cookie-consent') === 'accepted') {
-        setCookie("colorePreferito", coloreSelezionato, 30);
-    }
-}
-
-// Quando la pagina si carica, controlla se c'è un colore salvato nel cookie
-document.addEventListener("DOMContentLoaded", function () {
-    var coloreSalvato = getCookie("colorePreferito");
-    if (coloreSalvato) {
-        // Se c'è un colore salvato, applicalo alla pagina
-        document.getElementById("coloreInput").value = coloreSalvato;
-        cambiaColore();
-    }
-});
-
-// Funzione per impostare il tema dal cookie
-function setThemeFromCookie() {
-    const themeStyle = document.getElementById('theme-style');
-    const savedTheme = getCookie('theme');
-    if (savedTheme) {
-        themeStyle.href = savedTheme;
-    }
-}
-
-// Funzione per impostare il tema e salvare nel cookie
-function setThemeCookie() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeStyle = document.getElementById('theme-style');
-    themeToggle.addEventListener('click', () => {
-        if (themeStyle.getAttribute('href') === 'styles/light.css') {
-            themeStyle.href = 'styles/dark.css';
-            setCookie('theme', 'styles/dark.css', 365); // Salva il tema nei cookie per un anno
-         } else {
-            themeStyle.href = 'styles/light.css';
-            setCookie('theme', 'styles/light.css', 365); // Salva il tema nei cookie per un anno
+        themeToggle.addEventListener('click', () => {
+            if (themeStyle.getAttribute('href') === '/styles/light.css') {
+                themeStyle.href = '/styles/dark.css';
+                setCookie('theme', '/styles/dark.css', 365); // Salva il tema nei cookie per un anno
+            } else {
+                themeStyle.href = '/styles/light.css';
+                setCookie('theme', '/styles/light.css', 365); // Salva il tema nei cookie per un anno
             }
-    });
-}
+        });
+    }
+});
 
 function validateInput(input) {
   input.value = input.value.replace(/[^0-9.,]/g, '');
