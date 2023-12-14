@@ -3,11 +3,12 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    width: auto;
+    width: 100%;
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px;
+    z-index: 1;
 }
 
 #accept-cookies {
@@ -126,6 +127,9 @@ button:active {
     margin-bottom: 4%;
 }
 @media (max-width: 1000px){
+    .cookie-banner {
+        width: 100%;
+    }
     h1{
         /*border: 8px solid rgb(255, 0, 0);*/
         flex-basis: 60%;
