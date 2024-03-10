@@ -56,29 +56,44 @@
 		<p>Questo sito utilizza i cookie per garantire un'esperienza utente migliore. Accetti l'uso dei cookie?</p>
 		<button id="accept-cookies">Accetta</button>
 	</div>
-	
-	<input type="color" id="coloreInput" name="coloreInput" onchange="cambiaColore()">
+
+	<details>
+	<summary>Stili</summary>
+		  <table>
+		  <tr><th>Element</th><th>Value</th><th>Delete</th></tr>
+		  <tr><td>Tema</td><td><input type="color" id="coloreInput" value="#00ff00" onchange="cambiaColore()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferito')"></td></tr>
+		  <tr><td>Bordi</td><td><input type="color" id="coloreBordi" onchange="cambiaColoreBordi()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferitoBordi')"></td></tr>
+		  <tr><td>BottoniClr</td><td><input type="color" id="coloreBackgroundBottoni" onchange="cambiaBackgroundBottoni()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferitoBackgroundBottoni')"></td></tr>
+		  <tr><td>BottoniTxt</td><td><input type="color" id="coloreTestoBottoni" onchange="cambiaColoreTestoBottoni()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferitoTestoBottoni')"></td></tr>
+	  </table><br>
+	  <button onClick="window.location.href=window.location.href">Ricarica pagina</button>
+	  <br><br>
+  	</details>
+
 	<div class="container coloreBordo">
 
 		<p>Inserisci la media da ottenere:</p>
-		<input type="text" class="coloreBordo" id="media" placeholder="5.5" oninput="validateInput1(this)" tabindex="1" />
+		<input type="text" class="coloreBordo" id="media" placeholder="5.5" oninput="validateInput(this)" tabindex="1" />
 
-		<p>Inserisci il valore massimo ottenibile (intero e min +0.01 della media desiderata):</p>
-		<input type="text" class="coloreBordo" pattern="\d*" id="vmax" placeholder="10" oninput="validateInput2(this)" tabindex="2" />
-		
-		<p>Inserisci una serie di numeri separati da una virgola:</p>
-		<input type="text" class="coloreBordo" id="numbers" placeholder="7.15,6,4,8.5,5" oninput="validateInput(this)" tabindex="3" />
-		<button id="button" onclick="calculate()" tabindex="4" >Calcola</button>
+		<p>Inserisci il valore massimo ottenibile:</p>
+		<input type="text" class="coloreBordo" id="vmax" placeholder="10" oninput="validateInput(this)" tabindex="2" />
+
+		<p>Inserisci i numeri</p>
+		<div class="valori">
+			<input type="text" class="coloreBordo numbers" id="numbers" placeholder="valore" oninput="validateInput(this)" tabindex="3" />
+		</div>
+		<button onclick="aggiungiInput()" class="add-button">+</button>
+		<button id="button" class="coloreBordo btn-bgcolor" onclick="calculate()" tabindex="4" >Calcola</button>
 
 		<p id="testo1"></p>
 		<div id="result"></div>
 
     	<p id="testo2"></p>
-		<button id="button2" onclick="show()" tabindex="5" >Mostra/Nascondi alternative<br>[BETA]</button>
 
 		<div id="quanti"></div>
 		<p id="errore"></p>
 
+		<button id="button2" class="btn-bgcolor" onclick="show()" tabindex="5" >Mostra/Nascondi alternative<br>[BETA]</button>
 		<div id="alternativa" class="coloreBordo"></div>
 		<br>
 	</div>
