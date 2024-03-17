@@ -146,6 +146,9 @@ function deleteCookie(cookieName) {
 }
 
 
+// Variabile globale per tenere traccia del tabindex progressivo
+var nextTabIndex = 4;
+
 function aggiungiInput() {
     // Crea un nuovo elemento di input
     var inputElement = document.createElement("input");
@@ -153,6 +156,8 @@ function aggiungiInput() {
     inputElement.setAttribute("class", "numbers");
     inputElement.setAttribute("placeholder", "valore");
     inputElement.setAttribute("oninput", "validateInput(this)");
+    inputElement.setAttribute("tabindex", nextTabIndex); // Aggiungi il tabindex progressivo
+    nextTabIndex++; // Incrementa il valore del tabindex
 
     // Crea un pulsante per rimuovere l'input appena creato
     var removeButton = document.createElement("button");
