@@ -265,6 +265,8 @@ function calculate() {
                 serve[arr] = a + 0.85;
             } else if (serve[arr] - a > 0.86 && serve[arr] - a <= 1) {
                 serve[arr] = a + 1.0;
+            } else {
+                serve[arr] = a;
             }
         }
 
