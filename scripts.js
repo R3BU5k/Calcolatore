@@ -257,16 +257,14 @@ function calculate() {
         for (var arr = 0; arr < 4; arr++) {
             var a = Math.floor(serve[arr]);
 
-            if (serve[arr] - a > 0.01 && serve[arr] - a <= 0.15) {
+            if (serve[arr] - a >= 0.01 && serve[arr] - a <= 0.15) {
                 serve[arr] = a + 0.15;
-            } else if (serve[arr] - a > 0.16 && serve[arr] - a <= 0.5) {
+            } else if (serve[arr] - a >= 0.16 && serve[arr] - a <= 0.5) {
                 serve[arr] = a + 0.5;
-            } else if (serve[arr] - a > 0.51 && serve[arr] - a <= 0.85) {
+            } else if (serve[arr] - a >= 0.51 && serve[arr] - a <= 0.85) {
                 serve[arr] = a + 0.85;
-            } else if (serve[arr] - a > 0.86 && serve[arr] - a <= 1) {
+            } else if (serve[arr] - a >= 0.86 && serve[arr] - a <= 1) {
                 serve[arr] = a + 1.0;
-            } else {
-                serve[arr] = a;
             }
         }
 
