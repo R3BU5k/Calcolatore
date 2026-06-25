@@ -1,263 +1,301 @@
 .cookie-banner {
-    display: none;
+    display: none; /* Verrà mostrato via JS cambiando in 'flex' */
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
+    bottom: 20px; /* Staccato dal fondo per un effetto moderno a freccia/badge */
+    left: 50%;
+    transform: translateX(-50%); /* Trucco matematico CSS per il centraggio assoluto */
+    width: 90%;
+    max-width: 450px; /* Non diventa gigante sui monitor grandi */
+    background-color: #222222;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 9999; /* Sopra a qualsiasi altro elemento della pagina */
+    
+    /* Allineamento interno */
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: 85%;
+    line-height: 1.4;
     text-align: center;
-    padding: 10px;
-    z-index: 1;
 }
 
 #accept-cookies {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    padding: 5px 15px;
+    padding: 8px 25px;
+    font-size: 85%;
+    border-radius: 8px;
     cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    width: 100%; /* Sui telefoni è più comodo da cliccare a schermo intero */
+    transition: background 0.2s;
+}
+#accept-cookies:hover {
+    background-color: #0056b3;
+}
+
+/* Ripristino dell'icona delete.png per resettare i singoli stili nella tabella */
+.delete-cookie {
+    background-image: url("../images/delete.png");
+    background-size: 24px; /* Dimensione dell'icona all'interno della cella */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 45px; /* Larghezza della colonna di eliminazione */
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+/* Effetto al passaggio del mouse */
+.delete-cookie:hover {
+    background-color: rgba(255, 0, 0, 0.15); 
+    border-radius: 8px;
+}
+
+/* Feedback al click */
+.delete-cookie:active {
+    transform: scale(0.9);
 }
 
 #theme-toggle {
     background-image: url("../images/theme.png");
-    height: 60px;
-    width: 60px;
-    transition: 0.5s linear;
+    height: 50px; /* Ridotto leggermente da 60px per una resa più elegante */
+    width: 50px;
+    transition: 0.3s ease;
     background-position: center;
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0);
-    border: 0px;
-
+    background-color: transparent;
+    border: 0;
+    
     position: fixed;
-    top: 5%;
-    right: 3%;
+    top: 15px;    /* Posizionamento fisso e stabile in pixel */
+    right: 15px;   /* Posizionamento fisso e stabile in pixel */
+    cursor: pointer;
+    z-index: 999;  /* Assicura che rimanga sopra agli altri elementi cliccabili */
 }
 
-* {
-    /*transition: 0.3s linear;*/
+.colore {
+    color: rgb(0, 255, 21);
+}
+
+/* Ripristino della cornice per il menu Stili (details) */
+details {
+    margin: 20px auto;
+    padding: 15px;
+    border: 3px solid rgb(0, 255, 21); /* Stesso verde dei bordi */
+    border-radius: 16px;
+    max-width: 500px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 110%;
+    outline: none;
+}
+
+/* Tabella interna stilizzata meglio per non rompere il design */
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    font-size: 90%;
 }
 
 body {
-    background-color: rgb(255, 255, 255);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #ffffff;
     text-align: center;
-    font-family: "Itim";
-    font-size: 180%;
-    padding: 3%;
-    color: #000000;
-    margin: 0% 8% 0% 8%;
-}
-
-h1 {
-    border: 4px solid #00000000;
-    text-shadow: 2px 2px 4px #000000;
-    flex-basis: 60%;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    letter-spacing: 0.2rem;
-    color: rgb(0, 255, 21);
-    font-weight: 500;
-    text-align: center;
-    /*border: 8px solid rgb(0, 255, 26);*/
-    margin-top: 0;
-}
-
-table,
-th,
-td {
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-table {
-    width: 60%;
-    /* Larghezza della tabella */
-    margin-left: auto;
-    /* Centra orizzontalmente */
-    margin-right: auto;
-}
-
-/* Stile per le celle della tabella */
-th,
-td {
-    padding: 8px;
-    /* Aggiungi spaziatura interna */
-    text-align: center;
-    /* Allinea il testo al centro */
-}
-
-#deleteCookie {
-    background-image: url("../images/delete.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#deleteCookie:hover {
-    background-color: #66666695;
-}
-
-#deleteCookie:active {
-    transform: translateY(4px);
+    font-family: "Itim", sans-serif;
+    font-size: 140%;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-    border: 8px solid rgb(0, 255, 26);
-    border-radius: 50px;
+    max-width: 500px;
+    margin: 30px auto;
+    border: 6px solid rgb(0, 255, 21);
+    border-radius: 24px;
+    background-color: #fafafa;
+    padding: 25px;
+}
+
+/* Ridisegno Stile Caselle di Input */
+.config-grid {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 85%;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-styled {
+    height: 45px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 22px;
+    color: #222;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 2px solid #ccc;
     text-align: center;
+    font-family: inherit;
+    transition: all 0.2s ease;
 }
 
-.sharethis-inline-share-buttons {
-    border: 0px;
-    margin-top: 2%;
-    display: none;
-}
-
-input {
-    text-align: center;
-}
-
-::placeholder {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-button,
-a {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
+.input-styled:focus {
     outline: none;
-    color: #fff;
-    background-color: #4caf50;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 5px #999;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
 }
 
-button:hover {
-    background-color: #3e8e41;
+.section-title {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 90%;
+    text-align: left;
+    color: #444;
 }
 
-button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+/* Vista e allineamento lista voti dinamici */
+.valori-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
+.valori {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.input-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.numbers {
+    width: 90px;
+}
+
+/* Pulsanti + e - */
 .add-button {
-    background-color: #00db07;
-    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    font-size: 24px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.add-button:hover {
-    background-color: #009900;
-}
+.add-button:hover { background-color: #0056b3; }
 
 .remove-input {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+    line-height: 18px;
+    color: white;
     background-color: #d90000;
+    border: none;
     border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    font-weight: bold;
 }
 
-.remove-input:hover {
-    background-color: #a90000;
-}
+.remove-input:hover { background-color: #a90000; }
 
-.numbers {
+.main-calc-btn {
+    width: 100%;
     height: 50px;
-    width: 300px;
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    margin: 10px 20px;
+    font-size: 22px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    border: 3px solid rgb(0, 255, 21);
+    transition: transform 0.1s ease;
+}
+.main-calc-btn:active { transform: scale(0.98); }
+
+.results-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #f1f3f5;
 }
 
-.numbers {
-    width: 100px !important;
+#result {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-#media,
-#vmax,
-.numbers {
-    height: 50px;
-    width: 80px;
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
+#errore { color: #d90000; font-size: 85%; }
+
+.telegram-link {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    background-color: rgb(49,172,228);
+    margin-top: 20px;
 }
 
-#alternativa {
-    width: auto;
-    border: 8px solid rgb(0, 255, 21);
-    border-radius: 30px;
-    display: none;
-}
+@media (max-width: 500px) {
+  body { 
+    padding: 10px; 
+    font-size: 120%; 
+    padding-top: 0; /* Rimosso il blocco che spingeva tutto in basso */
+  }
+  
+  h1 {
+    margin-top: 60px; /* Crea lo spazio perfetto solo per l'icona, senza toccare il container dei calcoli */
+    font-size: 150%;
+  }
 
-#button2 {
-    margin-top: 4%;
-    margin-bottom: 4%;
-}
-
-@media (max-width: 1000px) {
-    .cookie-banner {
-        width: auto;
-    }
-
-    h1 {
-        /*border: 8px solid rgb(255, 0, 0);*/
-        flex-basis: 60%;
-        font-size: 160%;
-        letter-spacing: 0.2rem;
-        font-weight: 500;
-        padding-top: 4%;
-        margin-left: 2%;
-    }
-
-    body {
-        font-size: 120%;
-    }
-
-    button, a {
-        padding: 3px 5px;
-        font-size: 16px;
-    }
-
-    .add-button {
-        height: 30px;
-        width: 30px;
-    }
-
-    .remove-input {
-        height: 30px;
-        width: 30px;
-    }
-
-    .numbers {
-        width: 100px !important;
-    }
-
-    #media,
-    #vmax,
-    .numbers {
-        height: 20px;
-        width: 40px;
-        font-size: 15px;
-    }
-
-    #theme-toggle {
-        height: 30px;
-        width: 30px;
-        top: 5%;
-        right: 3%;
-    }
-
-    #button2 {
-        margin-top: 4%;
-        margin-bottom: 10%;
-    }
+  .container { margin: 10px auto; padding: 15px; }
+  .config-grid { flex-direction: column; gap: 10px; }
+  details { margin: 10px auto; }
 }
