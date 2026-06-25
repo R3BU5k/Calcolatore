@@ -1,105 +1,102 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3CMX4CY2CZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3CMX4CY2CZ');
-</script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        // blocco il tracciamento di default prima del consenso
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied'
+        });
+    </script>
 
     <link rel="canonical" href="https://r3bu5k.github.io/Calcolatore/" />
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="description" content="Benvenuto! Questa web app ti permette di calcolare i valori mancanti necessari per raggiungere la media desiderata in modo semplice e veloce. Funzionamento: inserisci i valori a disposizione finora e il valore massimo ottenibile, specifica la media desiderata e lascia che l'algoritmo faccia il resto.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Benvenuto! Questa web app ti permette di calcolare i valori mancanti necessari per raggiungere la media desiderata in modo semplice e veloce.">
 
-    	<title>Calcola la media di R3BU5</title>
-    	<meta name="robots" content="index,follow">
+    <title>Calcola la media di R3BU5</title>
+    <meta name="robots" content="index,follow">
 
-	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-	<link rel="icon" href="images/logo.ico" type="/image/x-icon" sizes="180x180"/>
-	<link rel="shortcut icon" href="images/calc.ico" type="/image/x-icon"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" href="images/logo.ico" type="image/x-icon" sizes="180x180"/>
+    <link rel="shortcut icon" href="images/calc.ico" type="image/x-icon"/>
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
 
-	<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
-
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="msapplication-config" content="icons/browserconfig.xml">
-
-	<!-- Splash Screen for iPhone(s) -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link href="splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	<link href="splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-	
-	<link rel="stylesheet" id="theme-style" href="styles/light.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Itim">
-	<link rel="manifest" href="manifest.json"> <!-- PWA -->
-	<meta name="theme-color" content="#00FF15" class="content" />
-	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=64b57269cf4bea0012ddd6ce&product=inline-share-buttons' async='async'></script>
-
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="icons/browserconfig.xml">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" id="theme-style" href="styles/light.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Itim">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00FF15" id="meta-theme-color" />
+    <script src="https://platform-api.sharethis.com/js/sharethis.js#property=64b57269cf4bea0012ddd6ce&product=inline-share-buttons" async></script>
 </head>
-<body oncontextmenu="return false">
-<input type="button" id="theme-toggle">
-	<h1 class="colore">Calcola la media</h1>
-	
-	<div id="cookie-banner" class="cookie-banner">
-		<p>Questo sito utilizza i cookie per garantire un'esperienza utente migliore. Accetti l'uso dei cookie?</p>
-		<button id="accept-cookies">Accetta</button>
-	</div>
+<body>
+    <input type="button" id="theme-toggle">
+    <h1 class="colore">Calcola la media</h1>
+    
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Questo sito utilizza i cookie per garantire un'esperienza utente migliore. Accetti l'uso dei cookie?</p>
+        <button id="accept-cookies">Accetta</button>
+    </div>
 
-	<details>
-	<summary>Stili</summary>
-		  <table>
-		  <tr><th>Element</th><th>Value</th><th>Delete</th></tr>
-		  <tr><td>Tema</td><td><input type="color" id="coloreInput" value="#00ff00" onchange="cambiaColore()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferito')"></td></tr>
-		  <tr><td>Bordi</td><td><input type="color" id="coloreBordi" onchange="cambiaColoreBordi()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferitoBordi')"></td></tr>
-		  <tr><td>BottoniClr</td><td><input type="color" id="coloreBackgroundBottoni" onchange="cambiaBackgroundBottoni()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferitoBackgroundBottoni')"></td></tr>
-		  <tr><td>BottoniTxt</td><td><input type="color" id="coloreTestoBottoni" onchange="cambiaColoreTestoBottoni()"></td><td id="deleteCookie" onclick="deleteCookie('colorePreferitoTestoBottoni')"></td></tr>
-	  </table><br>
-	  <button class="btn-bgcolor" onClick="window.location.href=window.location.href">Ricarica pagina</button>
-	  <br><br>
-  	</details>
+    <div class="container coloreBordo">
+        <div class="config-grid">
+            <div class="input-group">
+                <label for="media">Media obiettivo:</label>
+                <input type="text" class="coloreBordo input-styled" id="media" placeholder="5.5" tabindex="1" />
+            </div>
+            <div class="input-group">
+                <label for="vmax">Voto max ottenibile:</label>
+                <input type="text" class="coloreBordo input-styled" id="vmax" placeholder="10" tabindex="2" />
+            </div>
+        </div>
 
-	<div class="container coloreBordo">
+        <p class="section-title">Valori inseriti finora:</p>
+        <div class="valori-container">
+            <div class="valori">
+                <div class="input-wrapper">
+                    <input type="text" class="coloreBordo input-styled numbers" placeholder="voto" tabindex="3" />
+                </div>
+            </div>
+            <button id="add-input-btn" class="add-button" title="Aggiungi campo">+</button>
+        </div>
 
-		<p>Inserisci la media da ottenere:</p>
-		<input type="text" class="coloreBordo" id="media" placeholder="5.5" oninput="validateInput(this)" tabindex="1" />
+        <button id="button" class="coloreBordo btn-bgcolor main-calc-btn">Calcola la media</button>
 
-		<p>Inserisci il valore massimo ottenibile:</p>
-		<input type="text" class="coloreBordo" id="vmax" placeholder="10" oninput="validateInput(this)" tabindex="2" />
+        <div class="results-box">
+            <p id="testo1"></p>
+            <div id="result"></div>
+            <p id="testo2"></p>
+            <div id="quanti"></div>
+            <p id="errore"></p>
+        </div>
+    </div>
 
-		<p>Inserisci i numeri</p>
-		<div class="valori">
-			<input type="text" class="coloreBordo numbers" id="numbers" placeholder="valore" oninput="validateInput(this)" tabindex="3" />
-		</div>
-		<button onclick="aggiungiInput()" class="add-button">+</button>
-		<button id="button" class="coloreBordo btn-bgcolor" onclick="calculate()">Calcola</button>
+    <details class="coloreBordo">
+        <summary>Stili</summary>
+        <table>
+            <thead>
+                <tr><th>Elemento</th><th>Valore</th><th>Elimina</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Tema</td><td><input type="color" id="coloreInput" value="#00ff00"></td><td class="delete-cookie" data-cookie="colorePreferito"></td></tr>
+                <tr><td>Bordi</td><td><input type="color" id="coloreBordi"></td><td class="delete-cookie" data-cookie="colorePreferitoBordi"></td></tr>
+                <tr><td>Bottoni Ctr</td><td><input type="color" id="coloreBackgroundBottoni"></td><td class="delete-cookie" data-cookie="colorePreferitoBackgroundBottoni"></td></tr>
+                <tr><td>Bottoni Txt</td><td><input type="color" id="coloreTestoBottoni"></td><td class="delete-cookie" data-cookie="colorePreferitoTestoBottoni"></td></tr>
+            </tbody>
+        </table>
+        <br>
+        <button class="btn-bgcolor" id="reload-page">Ricarica pagina</button>
+        <br><br>
+    </details>
 
-		<p id="testo1"></p>
-		<div id="result"></div>
+    <div class="sharethis-inline-share-buttons" id="sharethis-inline-share-buttons"></div>
+    <a href='https://t.me/CalcolatoreVoti' target="_blank" class="telegram-link">Resta Aggiornato</a>
 
-    	<p id="testo2"></p>
-
-		<div id="quanti"></div>
-		<p id="errore"></p>
-
-		<button id="button2" class="btn-bgcolor" onclick="show()">Mostra/Nascondi alternative<br>[BETA]</button>
-		<div id="alternativa" class="coloreBordo"></div>
-		<br>
-	</div>
-	<div class="sharethis-inline-share-buttons" id="sharethis-inline-share-buttons"></div>
-	<a href='https://t.me/CalcolatoreVoti' target="_blank" style="background-color: rgb(49,172,228); margin-top: 2%;">Resta Aggiornato</a>
-	<script src="scripts.js"></script>
-	<script src="index.js"></script> <!-- PWA -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
